@@ -6,6 +6,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>자유게시판</title>
+	<script type="text/javascript">
+		var btn_stop = document.getElementById("btn_stop");
+		
+		function goBack() {
+		    window.history.back();
+		}
+		
+		function move_check() {
+				if (confirm("정말로 삭제하시겠습니까?"))
+					return true;
+				else
+					return false;
+		}//move_check()
+		// btn_stop.onclick = move_check;
+	</script>
+
 </head>
 <body>
 	<jsp:useBean id="FBbean" class="pubg.util.FreeBoardBeanz" scope="page" />
@@ -37,8 +53,9 @@
 		</tr>
 	</table>
 	<p>
-		<button type="button" onclick="window.history.back();">뒤로가기</button>
-		<input type="submit" value ="삭제" name='<%=regBean.getRegno() %>' onclick="deleteQ();"/>
+		<%-- 함수 수정(확인기능추가) --%>
+		<button type="button" onclick="goBack();">뒤로가기</button> 
+		<input id="btn_stop" type="submit" value ="삭제" name='<%=regBean.getRegno() %>' onclick="move_check();"/>
 	</p>
 </form>
 </body>

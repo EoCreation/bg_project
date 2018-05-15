@@ -10,8 +10,10 @@
 <h1>글쓰기</h1>
 <form method="post" action="free_board_writing_submit.jsp">
 
+
 <p>
-작성자(임시) : <input type="text" name="user_id"  value="최대 10자" size="20"/><br/>
+<%-- 작성자를 세션에서 받아오는 걸로 수정 완료 --%>
+작성자 : <input type="text" name="user_id"  value=<%=session.getAttribute("user_id") %> size="20"/><br/>
 제목 : <textarea name="f_title" cols="50" rows="1">최대 50자</textarea><br/>
 내용 : <textarea name="f_text" cols="40" rows="5">최대 200자</textarea>
 </p>

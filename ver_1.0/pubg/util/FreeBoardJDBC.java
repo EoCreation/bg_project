@@ -140,7 +140,7 @@ public class FreeBoardJDBC {
 		try {
 			con = DriverManager.getConnection(JDBC_URL, id, pw);
 			ps = con.prepareStatement(instQuery);
-			ps.setString(1, "aaa"); /* ver.1.11 ----- user_id 의 임시방편 : foreign key 관련 exception --- */ 
+			ps.setString(1, user_id); /* (해결했습니다 by CHAE : ver_1.0.11 ----- user_id 의 임시방편 : foreign key 관련 exception --- */ 
 			ps.setString(2, f_title);
 			ps.setString(3, f_text);
 			ps.setString(4, f_date);
