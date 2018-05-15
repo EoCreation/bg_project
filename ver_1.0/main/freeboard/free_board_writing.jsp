@@ -18,7 +18,7 @@
 <p>
 <input type="submit" value="작성"/>
 <input type="reset" value="다시쓰기"/>
-<button type="button" onclick="location='free_board.jsp'">목록으로</button>
+<button type="button" onclick="window.history.back();">목록으로</button>
 </p>
 </form>
 

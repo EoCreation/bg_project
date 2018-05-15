@@ -55,6 +55,6 @@
 			</select> <input type="text" name="search" /> <input type="submit" value="검색" />
 		</p>
 	</form>
-	<button type="button" onclick="location='free_board_writing.jsp'">글쓰기</button>
+	<button type="button" onclick="window.history.back();">뒤로가기</button>
 </body>
 </html>

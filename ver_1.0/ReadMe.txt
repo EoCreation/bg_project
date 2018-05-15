@@ -1,4 +1,44 @@
 ﻿==================================
+++ <ver_1.0.23>			++
+++ ReadMe.txt			++
+++ 수정날짜 : 2018/05/14 19:09	++
+==================================
+* free_board_writing.jsp
+ - ver_1.0.11에서 FK 관련 문제를 로그인시 설정된 세션에서 user_id를 받아오는 것으로 수정했습니다.
+
+
+==================================
+++ <ver_1.0.11>			++
+++ ReadMe.txt			++
+++ 수정날짜 : 2018/05/14 19:09	++
+==================================
+* 파일 수정 : FreeBoardJDBC.java
+ - insertFBoardText()
+ - before  => ps.setString(1, user_id);  
+ - after    => ps.setString(1, "aaa");
+ - 현재 DB의 연동 상 글작성 시 user_id의 foreign key 관련 exception 발생.
+ - 매개변수는 수정하지 않았지만 임시로 setString을 지정값으로 변경하여 임시 해결.
+
+* 파일 수정 및 삭제 : free_board.jsp제외 모든 파일
+ - 전체적으로 하단 버튼 삭제.
+ - 원인 : 경로 설정상의 논리 문제.
+ - 뒤로가기 버튼 생성으로 해결. => window.history.back(); 함수 이용
+ - 글 작성 완료시 자유게시판이 아닌 main.jsp로 이동.
+
+* 파일 수정 : free_board_post.jsp
+ - 삭제 기능 추가
+
+* 파일 수정 : FreeBoardJDBC.java 
+ - 글 삭제 함수 추가.
+ - deleteFBoardText(int regno) 함수.
+
+* 파일 추가 : free_board_delete.jsp
+ - 글보기 페이지 하단에 삭제버튼 추가
+ - 삭제버튼 클릭시 free_board_delete.jsp 페이지로 이동
+ - 미구현 기능 => 정말 삭제하시겠습니까? 확인 alert() 
+ - alert창 확인 이후, JDBC의 delete함수 작동 및 main.jsp로 이동
+
+==================================
 ++ <ver_1.0>			++
 ++ ReadMe.txt			++
 ++ 수정날짜 : 2018/05/14 14:19	++

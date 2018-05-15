@@ -17,6 +17,7 @@ public class FreeBoardJDBC {
 	String searchQuery = "select regno, user_id, f_title, f_date from free_board where f_title like ?"; // 제목검색
 	String textQuery = "select * from free_board where regno = ?"; //제목클릭 글보기 쿼리
 	String instQuery = "insert into free_board(user_id, f_title, f_text, f_date) values(?, ?, ?, ?)"; // 글작성
+	String deleteQuery = "delete from free_board where regno = ?"; //글삭제
 	
 	public FreeBoardJDBC() {
 		try {
@@ -139,7 +140,7 @@ public class FreeBoardJDBC {
 		try {
 			con = DriverManager.getConnection(JDBC_URL, id, pw);
 			ps = con.prepareStatement(instQuery);
-			ps.setString(1, user_id);
+			ps.setString(1, "aaa"); /* ver.1.11 ----- user_id 의 임시방편 : foreign key 관련 exception --- */ 
 			ps.setString(2, f_title);
 			ps.setString(3, f_text);
 			ps.setString(4, f_date);
@@ -152,5 +153,25 @@ public class FreeBoardJDBC {
 		}
 	}
 	//---글작성 end---
+	
+	
+	//---글삭제---
+	public void deleteFBoardText(int regno) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		try {
+			con = DriverManager.getConnection(JDBC_URL, id, pw);
+			ps = con.prepareStatement(deleteQuery);
+			ps.setInt(1, regno); 
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Exception : " + e);
+		} finally {
+			try { ps.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { con.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+	}
+	//---글삭제 end---
 	
 }

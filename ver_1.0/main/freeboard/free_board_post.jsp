@@ -13,10 +13,10 @@
 	<%
 		int regno = Integer.parseInt(request.getParameter("regno"));
 		Vector<FreeBoardBeanz> vt = FBjdbc.getFBoardText(regno);
-		for (int i = 0; i < vt.size(); i++) {
-			FreeBoardBeanz regBean = (FreeBoardBeanz) vt.elementAt(i);
+				
+		FreeBoardBeanz regBean = (FreeBoardBeanz) vt.elementAt(0);
 	%>
-
+	<form name="delForm" method="get" action="free_board_delete.jsp">
 	<table border="1">
 		<tr>
 			<th>글번호(regno)</th>
@@ -36,13 +36,10 @@
 			<td colspan="3"><%=regBean.getF_text()%></td>
 		</tr>
 	</table>
-	<%
-		}
-	%>
 	<p>
-		<button type="button" onclick="location='free_board.jsp'">목록</button>
 		<button type="button" onclick="window.history.back();">뒤로가기</button>
+		<input type="submit" value ="삭제" name='<%=regBean.getRegno() %>' onclick="deleteQ();"/>
 	</p>
-
+</form>
 </body>
 </html>
